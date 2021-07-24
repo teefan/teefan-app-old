@@ -42,6 +42,8 @@ group :development do
   gem 'rack-mini-profiler', '~> 2.0'
   # Listens to file modifications and notifies about the changes.
   gem 'listen', '~> 3.3'
+  # Use Brakeman to check for security vulnerabilities
+  gem 'brakeman'
   # Use Rubocop to enforce the guidelines outlined in the community Ruby Style Guide
   gem 'code-scanning-rubocop'
   gem 'rubocop', '~> 1.18', require: false
