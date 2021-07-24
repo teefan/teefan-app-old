@@ -11,7 +11,7 @@ on:
     - cron: '20 2 * * 0'
 
 jobs:
-  rubocop:
+  analysis:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -40,12 +40,11 @@ jobs:
       with:
         sarif_file: rubocop.sarif
 
-    # Execute Brakeman CLI and generate a SARIF output with the security issues identified during the analysis
     - name: Brakeman run
       continue-on-error: true
       run: |
         bash -c "
-          brakeman -f sarif -o brakeman.sarif.json .
+          bundle exec brakeman -f sarif -o brakeman.sarif.json .
           [[ $? -ne 2 ]]
         "
 
