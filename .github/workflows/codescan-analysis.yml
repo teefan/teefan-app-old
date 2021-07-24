@@ -1,5 +1,5 @@
 # pulled from repo
-name: "Rubocop"
+name: "Code Scanning"
 
 on:
   push:
@@ -26,9 +26,7 @@ jobs:
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: 3.0.1
-
-    - name: Install dependencies
-      run: bundle install
+        bundler-cache: true
 
     - name: Rubocop run
       run: |
@@ -37,7 +35,21 @@ jobs:
           [[ $? -ne 2 ]]
         "
 
-    - name: Upload Sarif output
+    - name: Upload Rubocop Sarif output
       uses: github/codeql-action/upload-sarif@v1
       with:
         sarif_file: rubocop.sarif
+
+    # Execute Brakeman CLI and generate a SARIF output with the security issues identified during the analysis
+    - name: Brakeman run
+      continue-on-error: true
+      run: |
+        bash -c "
+          brakeman -f sarif -o brakeman.sarif.json .
+          [[ $? -ne 2 ]]
+        "
+
+    - name: Upload Brakeman Sarif output
+      uses: github/codeql-action/upload-sarif@v1
+      with:
+        sarif_file: brakeman.sarif.json
