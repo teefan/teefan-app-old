@@ -44,7 +44,6 @@ jobs:
         run: |
           sudo systemctl enable mysql.service
           sudo systemctl start mysql.service
-          mysql --host 127.0.0.1 --port 32574 -uusername -ppassword -e "SHOW DATABASES"
 
       - name: Checkout repository
         uses: actions/checkout@v2
