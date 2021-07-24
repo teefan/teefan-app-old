@@ -2,4 +2,5 @@ database:
   username:
   password:
   url:
-  socket: /var/run/mysqld/mysqld.sock
+  host:
+  socket:

@@ -19,6 +19,8 @@ default: &default
 development:
   <<: *default
   database: three_kingdoms_development
+  url: <%= Settings.database.url %>
+  host: <%= Settings.database.host %>
   socket: <%= Settings.database.socket %>
 
 # Warning: The database defined as "test" will be erased and
@@ -28,6 +30,7 @@ test:
   <<: *default
   database: three_kingdoms_test
   url: <%= Settings.database.url %>
+  host: <%= Settings.database.host %>
   socket: <%= Settings.database.socket %>
 
 # As with config/credentials.yml, you never want to store sensitive information,
