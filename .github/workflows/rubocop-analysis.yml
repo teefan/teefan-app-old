@@ -1,5 +1,5 @@
 # pulled from repo
-name: "Code Scanning"
+name: "Rubocop"
 
 on:
   push:
@@ -11,7 +11,7 @@ on:
     - cron: '20 2 * * 0'
 
 jobs:
-  analysis:
+  rubocop:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -39,16 +39,3 @@ jobs:
       uses: github/codeql-action/upload-sarif@v1
       with:
         sarif_file: rubocop.sarif
-
-    - name: Brakeman run
-      continue-on-error: true
-      run: |
-        bash -c "
-          bundle exec brakeman -f sarif -o brakeman.sarif.json .
-          [[ $? -ne 2 ]]
-        "
-
-    - name: Upload Brakeman Sarif output
-      uses: github/codeql-action/upload-sarif@v1
-      with:
-        sarif_file: brakeman.sarif.json
