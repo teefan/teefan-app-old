@@ -34,6 +34,8 @@ group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   # Behaviour Driven Development for Ruby
   gem 'rspec-rails', '~> 5.0.0'
+  # Bring back controller tests
+  gem 'rails-controller-testing'
 end
 
 group :development do
