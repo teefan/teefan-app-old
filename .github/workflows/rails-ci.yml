@@ -32,7 +32,7 @@ jobs:
           MYSQL_ROOT_PASSWORD: rootpassword
           MYSQL_DATABASE_URL: mysql2://username:password@localhost/three_kingdoms_test
         ports:
-          - 33306:3306
+          - 3306:3306
         options: >-
           --health-cmd "mysqladmin ping"
           --health-interval 10s
@@ -40,6 +40,11 @@ jobs:
           --health-retries 5
 
     steps:
+      - name: Set up MySQL
+        run: |
+          sudo systemctl start mysql
+          mysql -e 'CREATE DATABASE ${{ env.MYSQL_DATABASE }};' -u${{ env.MYSQL_USERNAME }} -p${{ env.MYSQL_PASSWORD }}
+
       - name: Checkout repository
         uses: actions/checkout@v2
 

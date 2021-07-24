@@ -1,6 +1,3 @@
 database:
   username:
   password:
-  url:
-  host:
-  socket:

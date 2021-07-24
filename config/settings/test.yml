@@ -1,6 +1,3 @@
 database:
   username: username
   password: password
-  url: mysql2://username:password@localhost/three_kingdoms_test
-  host: localhost
-  socket:
