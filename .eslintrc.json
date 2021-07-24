@@ -1,0 +1,29 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "plugin:react/recommended",
+    "airbnb"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "plugins": [
+    "react",
+    "@typescript-eslint"
+  ],
+  "rules": {
+    "import/no-unresolved": "warn",
+    "max-len": ["warn", 120],
+    "no-use-before-define": "warn",
+    "react/destructuring-assignment": "warn",
+    "react/jsx-one-expression-per-line": "off"
+  }
+}
