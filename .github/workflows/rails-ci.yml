@@ -30,7 +30,7 @@ jobs:
           MYSQL_USER: threekingdoms
           MYSQL_PASSWORD: threekingdoms
           MYSQL_ROOT_PASSWORD: rootpassword
-          MYSQL_DATABASE_URL: mysql2://threekingdoms:threekingdoms@localhost/three_kingdoms_test
+          MYSQL_DATABASE_URL: mysql2://threekingdoms:threekingdoms@127.0.0.1/three_kingdoms_test
         ports:
           - 30306:3306
         options: >-
