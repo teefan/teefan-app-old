@@ -27,6 +27,7 @@ development:
 test:
   <<: *default
   database: three_kingdoms_test
+  host: 127.0.0.1
   port: 30306
 
 # As with config/credentials.yml, you never want to store sensitive information,
