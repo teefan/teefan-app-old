@@ -9,12 +9,9 @@ on:
     branches: [ main ]
 
 jobs:
-  rubocop:
+  rails:
     runs-on: ubuntu-latest
     strategy:
-      matrix:
-        ruby-version: [ '3.0' ]
-        node-version: [ '14.x' ]
       fail-fast: false
 
     steps:
@@ -26,15 +23,17 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: ${{ matrix.ruby-version }}
+          ruby-version: 3.0.1
           bundler-cache: true
 
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: ${{ matrix.node-version }}
-      - name: Install dependencies
-        run: yarn --frozen-lockfile
+          node-version: 14.12.0
+          cache: 'yarn'
+
+      - name: Install Yarn dependencies
+        run: yarn install --frozen-lockfile
 
       - name: RSpec run
         run: |
