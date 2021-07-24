@@ -30,6 +30,7 @@ jobs:
           MYSQL_USERNAME: username
           MYSQL_PASSWORD: password
           MYSQL_ROOT_PASSWORD: rootpassword
+          MYSQL_DATABASE_URL: mysql2://username:password@localhost/three_kingdoms_test
         ports:
           - 33306:3306
         options: >-
@@ -60,11 +61,7 @@ jobs:
         run: yarn install --frozen-lockfile
 
       - name: RSpec run
-        run: |
-          bash -c "
-            bundle exec rspec
-            [[ $? -ne 2 ]]
-          "
+        run: bundle exec rspec
 
       - name: Archive code coverage results
         uses: actions/upload-artifact@v2

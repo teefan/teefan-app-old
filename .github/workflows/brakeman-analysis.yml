@@ -30,11 +30,7 @@ jobs:
 
       - name: Brakeman run
         continue-on-error: true
-        run: |
-          bash -c "
-            bundle exec brakeman -f sarif -o brakeman.sarif.json .
-            [[ $? -ne 2 ]]
-          "
+        run: bundle exec brakeman -f sarif -o brakeman.sarif.json .
 
       - name: Upload Brakeman Sarif output
         uses: github/codeql-action/upload-sarif@v1
