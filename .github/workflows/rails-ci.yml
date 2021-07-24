@@ -27,10 +27,10 @@ jobs:
         image: mysql
         env:
           MYSQL_DATABASE: three_kingdoms_test
-          MYSQL_USER: username
-          MYSQL_PASSWORD: password
+          MYSQL_USER: threekingdoms
+          MYSQL_PASSWORD: threekingdoms
           MYSQL_ROOT_PASSWORD: rootpassword
-          MYSQL_DATABASE_URL: mysql2://username:password@localhost/three_kingdoms_test
+          MYSQL_DATABASE_URL: mysql2://threekingdoms:threekingdoms@localhost/three_kingdoms_test
         ports:
           - 30306:3306
         options: >-
@@ -44,7 +44,7 @@ jobs:
         run: |
           sudo systemctl enable mysql.service
           sudo systemctl start mysql.service
-          mysql --host localhost --port 30306 -uusername -ppassword -e "SHOW DATABASES"
+          mysql --host 127.0.0.1 --port 30306 -uthreekingdoms -pthreekingdoms -e "SHOW DATABASES"
 
       - name: Checkout repository
         uses: actions/checkout@v2
