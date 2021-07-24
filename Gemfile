@@ -43,6 +43,7 @@ group :development do
   # Listens to file modifications and notifies about the changes.
   gem 'listen', '~> 3.3'
   # Use Rubocop to enforce the guidelines outlined in the community Ruby Style Guide
+  gem 'code-scanning-rubocop'
   gem 'rubocop', '~> 1.18', require: false
   gem 'rubocop-rails', require: false
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
