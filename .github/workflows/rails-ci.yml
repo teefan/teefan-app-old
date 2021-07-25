@@ -26,7 +26,7 @@ jobs:
       postgres:
         image: postgres
         env:
-          POSTGRES_DATABASE: three_kingdoms_test
+          POSTGRES_DB: three_kingdoms_test
           POSTGRES_USER: threekingdoms
           POSTGRES_PASSWORD: threekingdoms
           POSTGRES_ROOT_PASSWORD: rootpassword

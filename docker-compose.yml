@@ -14,7 +14,7 @@ services:
   postgres:
     image: postgres:12.7
     environment:
-      POSTGRES_DATABASE: three_kingdoms_development
+      POSTGRES_DB: three_kingdoms_development
       POSTGRES_USER: threekingdoms
       POSTGRES_PASSWORD: threekingdoms
       POSTGRES_ROOT_PASSWORD: rootpassword
