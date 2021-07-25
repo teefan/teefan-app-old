@@ -1,5 +1,5 @@
-database:
+db:
   username: threekingdoms
   password: threekingdoms
   host: 127.0.0.1
-  port: 30306
+  port: 5432

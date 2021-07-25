@@ -4,9 +4,17 @@ services:
   web:
     build: .
     ports:
-      - "3000:3000"
+      - 3000:3000
     volumes:
       - .:/usr/src/app
 
   redis:
-    image: redis
+    image: redis:6.2
+
+  postgres:
+    image: postgres:12.7
+    environment:
+      POSTGRES_DATABASE: three_kingdoms_development
+      POSTGRES_USER: threekingdoms
+      POSTGRES_PASSWORD: threekingdoms
+      POSTGRES_ROOT_PASSWORD: rootpassword

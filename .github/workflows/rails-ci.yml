@@ -23,27 +23,20 @@ jobs:
           --health-timeout 5s
           --health-retries 5
 
-      mysql:
-        image: mysql
+      postgres:
+        image: postgres
         env:
-          MYSQL_DATABASE: three_kingdoms_test
-          MYSQL_USER: threekingdoms
-          MYSQL_PASSWORD: threekingdoms
-          MYSQL_ROOT_PASSWORD: rootpassword
-        ports:
-          - 30306:3306
+          POSTGRES_DATABASE: three_kingdoms_test
+          POSTGRES_USER: threekingdoms
+          POSTGRES_PASSWORD: threekingdoms
+          POSTGRES_ROOT_PASSWORD: rootpassword
         options: >-
-          --health-cmd "mysqladmin ping"
+          --health-cmd pg_isready
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
 
     steps:
-      - name: Set up MySQL
-        run: |
-          sudo systemctl enable mysql.service
-          sudo systemctl start mysql.service
-
       - name: Checkout repository
         uses: actions/checkout@v2
 
