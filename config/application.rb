@@ -36,5 +36,11 @@ module ThreeKingdoms
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    # Check if we use Docker to allow docker ip through web-console
+    if File.file?('/.dockerenv') == true
+      host_ip = `/sbin/ip route|awk '/default/ { print $3 }'`.strip
+      config.web_console.permissions = host_ip
+    end
   end
 end
