@@ -10,11 +10,15 @@ services:
 
   redis:
     image: redis:6.2
+    ports:
+      - 6379:6379
 
-  postgres:
+  database:
     image: postgres:12.7
     environment:
-      POSTGRES_DB: three_kingdoms_development
+      DATABASE_HOST: database
       POSTGRES_USER: threekingdoms
       POSTGRES_PASSWORD: threekingdoms
-      POSTGRES_ROOT_PASSWORD: rootpassword
+      POSTGRES_DB: three_kingdoms_development
+    ports:
+      - 5432:5432

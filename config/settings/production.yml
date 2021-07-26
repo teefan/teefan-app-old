@@ -1,3 +1,5 @@
 db:
   username:
   password:
+  host:
+  port:
