@@ -1,29 +1,47 @@
-version: "3"
+version: "3.9"
 
 services:
   web:
     build: .
+    command: ./bin/rails s -b 0.0.0.0
+    environment:
+      DATABASE_USERNAME: teefan_app
+      DATABASE_PASSWORD: teefan_app
+      DATABASE_HOST: localhost
+      DATABASE_PORT: 5432
     ports:
       - 3000:3000
     volumes:
-      - .:/usr/src/app
+      - web_data:/var/www/teefan_app
+
+  webpack_dev_server:
+    build: .
+    command: ./bin/webpack-dev-server
+    ports:
+      - 3035:3035
+    volumes:
+      - web_data:/var/www/teefan_app
 
   redis:
     image: redis:6.2
     ports:
       - 6379:6379
+    volumes:
+      - redis_data:/var/lib/redis
 
   database:
     image: postgres:12.7
     environment:
       DATABASE_HOST: database
-      POSTGRES_USER: threekingdoms
-      POSTGRES_PASSWORD: threekingdoms
-      POSTGRES_DB: three_kingdoms_development
+      POSTGRES_USER: teefan_app
+      POSTGRES_PASSWORD: teefan_app
+      POSTGRES_DB: teefan_app_development
     ports:
       - 5432:5432
     volumes:
-      - db_data:/var/lib/postgresql/data
+      - database_data:/var/lib/postgresql/data
 
 volumes:
-  db_data:
+  web_data:
+  redis_data:
+  database_data:

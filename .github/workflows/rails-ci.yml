@@ -28,9 +28,9 @@ jobs:
       postgres:
         image: postgres
         env:
-          POSTGRES_USER: threekingdoms
-          POSTGRES_PASSWORD: threekingdoms
-          POSTGRES_DB: three_kingdoms_test
+          POSTGRES_USER: teefan_app
+          POSTGRES_PASSWORD: teefan_app
+          POSTGRES_DB: teefan_app_test
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
