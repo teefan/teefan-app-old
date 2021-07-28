@@ -10,7 +10,7 @@ services:
       DATABASE_HOST: localhost
       DATABASE_PORT: 5432
     ports:
-      - 3000:3000
+      - "3000:3000"
     volumes:
       - web_data:/var/www/teefan_app
 
@@ -18,14 +18,14 @@ services:
     build: .
     command: ./bin/webpack-dev-server
     ports:
-      - 3035:3035
+      - "3035:3035"
     volumes:
       - web_data:/var/www/teefan_app
 
   redis:
     image: redis:6.2
     ports:
-      - 6379:6379
+      - "6379:6379"
     volumes:
       - redis_data:/var/lib/redis
 
@@ -37,7 +37,7 @@ services:
       POSTGRES_PASSWORD: teefan_app
       POSTGRES_DB: teefan_app_development
     ports:
-      - 5432:5432
+      - "5432:5432"
     volumes:
       - database_data:/var/lib/postgresql/data
 

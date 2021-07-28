@@ -12,6 +12,7 @@ COPY Gemfile* /var/www/teefan_app/
 WORKDIR /var/www/teefan_app
 RUN bundle install
 
+COPY package.json* /var/www/teefan_app/
 COPY yarn.lock /var/www/teefan_app/
 WORKDIR /var/www/teefan_app
 RUN yarn install
