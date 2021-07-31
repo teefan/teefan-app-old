@@ -1,5 +1,5 @@
 db:
   username: teefan_app
   password: teefan_app
-  host: localhost
+  host: database
   port: 5432

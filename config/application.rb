@@ -38,9 +38,9 @@ module TeefanApp
     config.generators.system_tests = nil
 
     # Check if we use Docker to allow docker ip through web-console
-    if File.file?('/.dockerenv') == true
+    if Rails.env.development? && File.file?('/.dockerenv')
       host_ip = `/sbin/ip route|awk '/default/ { print $3 }'`.strip
-      config.web_console.permissions = host_ip
+      config.web_console.permissions = host_ip if config.respond_to?(:web_console)
     end
   end
 end
