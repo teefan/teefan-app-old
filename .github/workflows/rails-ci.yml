@@ -28,6 +28,7 @@ jobs:
       postgres:
         image: postgres
         env:
+          DATABASE_HOST: database
           POSTGRES_USER: teefan_app
           POSTGRES_PASSWORD: teefan_app
           POSTGRES_DB: teefan_app_test
