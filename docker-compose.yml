@@ -11,6 +11,7 @@ services:
       POSTGRES_DB: teefan_app_development
     ports:
       - "3000:3000"
+      - "3005:3005"
     volumes:
       - web_data:/var/www/teefan_app
 
@@ -21,6 +22,13 @@ services:
       - "3035:3035"
     volumes:
       - web_data:/var/www/teefan_app
+
+  selenium_chrome:
+    image: selenium/standalone-chrome-debug
+    logging:
+      driver: none
+    ports:
+      - "5900:5900"
 
   redis:
     image: redis:6.2

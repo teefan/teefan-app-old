@@ -36,6 +36,9 @@ group :development, :test do
   gem 'rspec-rails', '~> 5.0.0'
   # Bring back controller tests
   gem 'rails-controller-testing'
+  # Use Capybara for front-end tests
+  gem 'capybara'
+  gem 'selenium-webdriver'
 end
 
 group :development do
