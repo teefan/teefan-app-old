@@ -23,12 +23,12 @@ jobs:
           --health-timeout 5s
           --health-retries 5
         ports:
-          - 6379:6379
+          - "6379:6379"
 
       postgres:
         image: postgres
         env:
-          DATABASE_HOST: database
+          DATABASE_HOST: localhost
           POSTGRES_USER: teefan_app
           POSTGRES_PASSWORD: teefan_app
           POSTGRES_DB: teefan_app_test
@@ -38,7 +38,7 @@ jobs:
           --health-timeout 5s
           --health-retries 5
         ports:
-          - 5432:5432
+          - "5432:5432"
 
     steps:
       - name: Checkout repository
