@@ -4,6 +4,11 @@ services:
   web:
     build: .
     command: ./bin/rails server -b 0.0.0.0
+    environment:
+      POSTGRES_HOST: database
+      POSTGRES_USER: teefan_app
+      POSTGRES_PASSWORD: teefan_app
+      POSTGRES_DB: teefan_app_development
     ports:
       - "3000:3000"
     volumes:
@@ -27,7 +32,7 @@ services:
   database:
     image: postgres:12.7
     environment:
-      DATABASE_HOST: localhost
+      POSTGRES_HOST: database
       POSTGRES_USER: teefan_app
       POSTGRES_PASSWORD: teefan_app
       POSTGRES_DB: teefan_app_development

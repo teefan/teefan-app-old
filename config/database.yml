@@ -2,10 +2,11 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch('RAILS_MAX_THREADS') { 5 } %>
-  username: <%= Settings.db.username %>
-  password: <%= Settings.db.password %>
-  host: <%= Settings.db.host %>
-  port: <%= Settings.db.port %>
+  database: <%= ENV['POSTGRES_DB'] %>
+  username: <%= ENV.fetch('POSTGRES_USER', Settings.db.user) %>
+  password: <%= ENV.fetch('POSTGRES_PASSWORD', Settings.db.password) %>
+  host: <%= ENV.fetch('POSTGRES_HOST', Settings.db.host) %>
+  port: <%= ENV.fetch('POSTGRES_PORT', Settings.db.port) %>
 
 development:
   <<: *default
@@ -18,5 +19,3 @@ test:
 production:
   <<: *default
   database: teefan_app_production
-  username: teefan_app
-  password:
